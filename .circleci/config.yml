@@ -11,16 +11,16 @@ jobs:
       - checkout
       # create virutal env and install dependencies
       - run:
-        name: install dependencies
-        command: |
-          python3 -m venv venv
-          . venv/bin/activate
-          pip install -r requirements.txt
+          name: install dependencies
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install -r requirements.txt
       # run linter, autopep8 and tests
       - run:
-        name: run tests
-        command: |
-          . venv/bin/activate
-          autopep8 --in-place --aggressive --aggressive --recursive blog/
-          flake8 --exclude=venv/* --statistics
-          python -m unittest discover -s tests -t blog
+          name: run tests
+          command: |
+            . venv/bin/activate
+            autopep8 --in-place --aggressive --aggressive --recursive blog/
+            flake8 --exclude=venv/* --statistics
+            python -m unittest discover -s tests -t blog
