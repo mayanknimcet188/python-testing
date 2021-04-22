@@ -11,6 +11,12 @@ class AppTest(TestCase):
         app.blogs = {'Test': blog}
 
     # todo - create test for various combinations of menu options, but do it
+    def test_menu_calls_ask_create_blog(self):
+        with patch('builtins.input') as mocked_input:
+            mocked_input.side_effect = ('c', 'Test Blog', 'Mayank', 'q')
+            app.menu()
+            self.assertIsNotNone(app.blogs['Test Blog'])
+
     # after adding Continuouos Integration
     def test_menu_calls_print_blogs(self):
         with patch('app.print_blogs') as mocked_print_blogs:
